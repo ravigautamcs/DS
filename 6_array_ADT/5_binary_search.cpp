@@ -28,6 +28,23 @@ int binary(struct Array *arr, int l, int h, int key){
     }
 }
 
+int Rbinsearch(struct Array *arr, int l, int h, int key){
+    int mid=(l+h)/2;
+    if(l==h){
+        return -1;
+    }
+    else if(key==arr->A[mid]){
+        return mid;
+    }
+    else if(key>arr->A[mid]){
+        l=mid+1;
+        return Rbinsearch(arr, l, h, key);
+    }
+    else{
+        h=mid-1;
+        return Rbinsearch(arr, l, h, key);
+    }
+}
 
 
 void print(int flag){
@@ -43,7 +60,11 @@ int main(){
     struct Array arr={{1,2,3,4,5,6,7,8,9}, 10, 9};
     int l=0;
     int h=arr.length;
-    int flag=binary(&arr, l, h, 22 );
+    int flag=binary(&arr, l, h, 5 );
     print(flag);
+    cout<<endl;
+    int flag1=Rbinsearch(&arr, l, h, 5);
+    print(flag1);
+    cout<<endl;
     return 0;
 }
