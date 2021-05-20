@@ -63,6 +63,34 @@ void Insert(struct Node *h, int pos, int x){
     }
 }
 
+void Delete(struct Node *h, int pos){
+    struct Node *p, *q;
+    if(pos==0){
+        p=Head;
+        while(p->next!=Head){
+            p=p->next;
+        }
+        p->next=Head->next;
+        int x=Head->data;
+        delete Head;
+        Head=p->next;
+
+        
+    }
+    else if(pos>0){
+        p=Head;
+        q=Head;
+        q=q->next;
+        for(int i=0; i<pos-2; i++){
+            p=p->next;
+            q=q->next;
+        }
+        p->next=q->next;
+        int x=q->data;
+        delete q;
+    }
+}
+
 int main(){
     int A[]={2,3,4,5,6,7};
     create(A, 6);
@@ -73,6 +101,10 @@ int main(){
     cout<<"inserting the elements in the circular linked list\n";
     Insert(Head, 0, 10);
     Insert(Head, 4, 110);
+    LDisplay(Head);
+    cout<<"printing after deleting a node in the circular linked list\n";
+    Delete(Head, 0);
+    Delete(Head, 5);
     LDisplay(Head);
     return 0;
 }
