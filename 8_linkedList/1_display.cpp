@@ -231,9 +231,46 @@ void SortedInsert(struct Node *p, int x)
 }
 
 //code for linked list deletion
-void Delete(int index)
+void Delete(struct Node *p, int pos)
 {
+    struct Node *q, *r;
+    r=first;
+    q=NULL;
+    if(pos==0){
+        r=r->next;
+        int x=r->data;
+        delete r;
+    }
+    else if(pos>0){
+        for(int i=0; i<pos-1 && p; i++){
+            q=r;
+            r=r->next;
+        }
+        q->next=r->next;
+        int x=r->data;
+        delete r;
+    }
 }
+
+int CheckSort(struct Node *p){
+    struct Node *q, *r;
+    int count=0;
+    r=first;
+    r=r->next;
+    q=first;
+    while(r!=NULL){
+        if(q->data <= r->data){
+            count++;
+        }
+        else{
+            return 0;
+        }
+        r=r->next;
+        q=q->next;
+    }
+    return count;
+}
+
 
 int main()
 {
@@ -261,7 +298,17 @@ int main()
     Insert(6, 135);
     InsertLast(first, 567); //runtime error
     SortedInsert(first, 14);
+    SortedInsert(first, 136);
     Display(first);
+    cout<<"deleting the note from the linked list\n";
+    Delete(first, 5);
+    Display(first);
+    cout<<"checking wheather the array is sorted or not\n";
+    int b=CheckSort(first);
+    if(b==0)
+        cout<<"not sorted\n";
+    else
+        cout<<"Sorted\n";
     cout << "hello world";
     return 0;
 }
