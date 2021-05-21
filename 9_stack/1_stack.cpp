@@ -59,7 +59,7 @@ int isFull(struct stack *st){
 }
 
 void Display(struct stack *st){
-    for(int i=0; i<st->size; i++){
+    for(int i=st->top; i>=0; i--){
         
         cout<<st->s[i];
         cout<<endl;
