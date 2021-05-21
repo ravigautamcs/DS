@@ -76,6 +76,21 @@ void Delete(struct Node *t, int pos){ //error
     }
 }
 
+void Reverse(struct Node *p){
+    struct Node *temp;
+    while(p!=NULL){
+        temp=p->next;
+        p->next=p->prev;
+        p->prev=temp;
+
+        p=p->prev;
+
+        if(p!=NULL && p->next==NULL){
+            first=p;
+        }
+    }
+}
+
 void Display(struct Node *p){
     while(p!=NULL){
         cout<<p->data<<endl;
@@ -90,6 +105,7 @@ int main(){
     Insert(first, 5, 60);
     Delete(first, 5);
     Delete(first, 0);
+    Reverse(first);
     Display(first);
     
     return 0;
