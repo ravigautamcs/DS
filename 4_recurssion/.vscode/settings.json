@@ -1,5 +1,9 @@
 {
     "files.associations": {
-        "ostream": "cpp"
+        "**/templates/*.html": "django-html",
+        "**/templates/*": "django-txt",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements",
+        "ostream": "cpp",
+        "iostream": "cpp"
     }
 }
