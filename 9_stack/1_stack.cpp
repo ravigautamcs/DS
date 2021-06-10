@@ -7,7 +7,7 @@ struct stack{
     int *s;
 };
 
-void create(struct stack *st){
+void create(struct stack * st){
     cout<<"Enter the size of the required stack\n";
     cin>>st->size;
     st->top=-1;
