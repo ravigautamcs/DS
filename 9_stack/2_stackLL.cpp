@@ -13,8 +13,8 @@ void push (int x){
         cout<<"stack is full\n";
     }
     else{
-        t->data=x;
-        t->next=top;
+        t->data=x; //storing the data
+        t->next=top; 
         top=t;
     }
 }
