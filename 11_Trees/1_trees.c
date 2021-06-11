@@ -120,6 +120,16 @@ void Postorder(struct Node *p){
     }
 }
 
+int count(struct Node *p){
+    int x=0,y=0;
+    if(p!=NULL){
+        x=count(p->lchild);
+        y=count(p->rchild);
+        return x+y+1;
+    }
+    return 0;
+}
+
 int main()
 {
     Tcreate();
@@ -129,6 +139,8 @@ int main()
     Inorder(root);
     printf("\n");
     Postorder(root);
-
+    printf("\n");
+    int x=count(root); //this will print the no of nodes
+    printf("%d \n", x);
     return 0;
 }
