@@ -130,6 +130,21 @@ int count(struct Node *p){
     return 0;
 }
 
+int count_deg2_nodes(struct Node *p){
+    //this will count the nodes with the degree 2
+    int x,y;
+    if(p!=NULL){
+        x=count_deg2_nodes(p->lchild);
+        y=count_deg2_nodes(p->rchild);
+        if(p->lchild && p->rchild){
+            return x+y+1;
+        }
+        else
+            return x+y;
+    }
+    return 0;
+}
+
 int main()
 {
     Tcreate();
@@ -142,5 +157,6 @@ int main()
     printf("\n");
     int x=count(root); //this will print the no of nodes
     printf("%d \n", x);
+    printf("the nodes with the degree 2 are %d.\n", count_deg2_nodes(root));
     return 0;
 }
