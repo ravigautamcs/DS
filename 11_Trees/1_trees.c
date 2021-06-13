@@ -158,5 +158,7 @@ int main()
     int x=count(root); //this will print the no of nodes
     printf("%d \n", x);
     printf("the nodes with the degree 2 are %d.\n", count_deg2_nodes(root));
+    //similiarly we can do more operation on trees
+
     return 0;
 }
