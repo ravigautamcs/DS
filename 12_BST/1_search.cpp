@@ -34,6 +34,26 @@ Node *ISearch(Node *t, int key){
     return NULL;
 }
 
+void insert(Node *t, int val){
+    struct Node *r=NULL, *p;
+    while(t!=NULL){
+        r=t;
+        if(val==t->data)
+            return ;
+        else if(val<t->data)
+            t=t->lchild;
+        else
+            t=t->rchild;
+    }
+    p=(Node *)malloc(sizeof(struct Node));
+    p->data=val;
+    p->lchild=p->rchild=NULL;
+    if(p->data<r->data)
+        r->lchild=p;
+    else
+        r->rchild=p;
+}
+
 
 int main(){
     
