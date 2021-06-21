@@ -171,35 +171,27 @@ void Insert(int pos, int x)
     }
 }
 
-void InsertLast(struct Node *p , int x)
-{
-    //this code is not working properly
-    struct Node *t, *q = NULL;
-    t = (struct Node *)malloc(sizeof(struct Node));
-    t->data = x;
-    t->next = NULL;
-
-    if (first == NULL)
-        first = t;
-    else
-    {
-        while (p && p!=NULL)
-        {
-            q = p;
-            p = p->next;
-        }
-        if (p == first)
-        {
-            t->next = first;
-            first = t;
-        }
-        else
-        {
-            t->next = q->next;
-            q->next = t;
-        }
+void InsertLast(struct Node *p, int n){
+    struct Node *t, *q;
+    
+    if(q==0){
+        q=first;
+        t= new Node [sizeof(struct Node)];
+        t->data=n;
+        t->next=NULL;
+        first=t;
     }
+    else{
+        q=first;
+        while(q->next!=NULL){
+            q=q->next;
+        }
+        t=new Node[sizeof(struct Node)];
+        t->data=n;
+        t->next=NULL;
+        q->next=t;
     }
+}
 
 void SortedInsert(struct Node *p, int x)
 {
