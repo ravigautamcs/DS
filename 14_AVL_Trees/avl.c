@@ -56,15 +56,36 @@ struct Node * LLRotation(struct Node *p){
 
 }
 
+//LR rotation
+struct Node *LRRotation(struct Node *p){
+
+    //taking the node pointers
+    struct Node *pl=p->lchild;
+    struct Node *plr=pl->rchild;
+
+    //doing the required changes
+    pl->rchild=plr->lchild;
+    p->lchild=plr->rchild;
+    plr->rchild=p;
+    plr->lchild=pl;
+
+    //now updating the heights
+    p->height=nodeHeight(p);
+    pl->height=nodeHeight(pl);
+    plr->height=nodeHeight(plr);
+
+    if(root==p){
+        root=plr;
+    }
+
+    return plr;
+}
+
 struct Node *RRRotation(struct Node *p){
 
     return NULL;    
 }
 struct Node *RLRotation(struct Node *p){
-
-    return NULL;
-}
-struct Node *LRRotation(struct Node *p){
 
     return NULL;
 }
@@ -110,7 +131,7 @@ struct Node * RInsert(struct Node *p, int key){
         //here we need to perform LLRotation as the condition shows;
         RLRotation(p);
     }
-
+  
     return p;
 
 }
