@@ -18,6 +18,18 @@ int main(){
     for(vp_it=vp.begin(); vp_it!=vp.end(); vp_it++){
         cout<<(vp_it->first)<<"\t"<<(vp_it->second)<<endl;  //(*it).first === it->first;
     }
+
+    //sort method to use the for loop for accessing the element of the vector it is available on c++ 11 or more
+    for(int value : v){
+        cout<<value<<"\t";
+    }
+    cout<<endl;
+
+    // auto a=1; this auto complete the datatype of the element so used to sort the initialization of iterators
+    for(auto value : v){
+        cout<<value<<"\t";
+    }
+    cout<<endl;
     
     return 0;
 }
