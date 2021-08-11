@@ -1,50 +1,102 @@
-#include <iostream>
-using namespace std;
+// 28. Program to list the vertices by traversing the given graph (adjacency list) through depth first traversal DFS
 
-struct Queue{
-    int size;
-    int first;
-    int *s;
-    int last;
-};
+#include<stdio.h>
+#include<stdlib.h>
 
-void createQueue(){
-    struct Queue q;
-    cin>>q.size;
-    q.first=q.last=-1;
-    q.s=(int *)malloc(q.size*sizeof(int));
-}
+// implementing the queue
+struct Node {
+    int data;
+    struct Node *next;
+}*first=NULL, *rear=NULL;
 
-void enqueue(int key){
-    if(q.last==q.size-1)
-        cout<<"Queue is full"<<endl;
-    q->last++;
-    q->s[q->last]=key;
-}
-
-void dequeue(struct Queue *q){
-    if(q->first==q->last)
-        cout<<"Queue is already empty"<<endl;
-    q->first=0;
-    q->first++;
-}
-
-void display(struct Queue *q){
-    if(q->first==q->last)
-        cout<<"Queue is empty"<<endl;
-    for(int i=q->first; i<=q->last; i++ ){
-        cout<<q->s[i]<<"\t";
+void enqueue(int x){
+    struct Node *t;
+    t=(struct Node *)malloc(sizeof(struct Node));
+    if(t==NULL){
+        printf("Queue is FULL\n");
+    }
+    else{
+        t->data=x;
+        t->next=NULL;
+        if(first==NULL){
+            first=rear=t;
+        }
+        else{
+            rear->next=t;
+            rear=t;
+        }
     }
 }
 
+int dequeue(){
+    int x=-1;
+    struct Node *p;
+    if(first==NULL){
+        printf("Queue is EMPTY\n");
+    }
+    else{
+        p=first;
+        first=first->next;
+        x=p->data;
+        free(p);
+    }
+    return x;
+}
+int isEmpty(){
+    return first==NULL;
+}
+
+//ending of the queue implimentation
+
+void BFS(int G[][7], int start, int n){
+    int i=start,j;
+    int visited[7]={0};
+
+    printf("%d ", i);
+    visited[i]=1;
+    enqueue(i);
+    while(!(isEmpty())){
+        i=dequeue();
+        for(j=1; j<n; j++){
+            if(G[i][j]==1 && visited[j]==0){
+                printf("%d ", j);
+                visited[j]=1;
+                enqueue(j);
+            }
+        }
+    }
+}
+
+void DFS(int G[][7], int start, int n){
+    static int visited[7]={0};
+    int j;
+    if(visited[start]==0){
+        printf("%d ", start);
+        visited[start]=1;
+        for(j=1; j<n; j++){
+            if(G[start][j]==1 && visited[j]==0){
+                DFS(G, j, n);
+            }
+        }
+    }
+}
+
+
 int main(){
-    
-    createQueue();
-    enqueue(10);
-    enqueue(20);
-    enqueue(30);
-    enqueue(40);
-    enqueue(50);
-    display();
+
+    int G[7][7]=
+    {
+        {0,0,0,0,0,0,0},
+        {0,0,1,1,0,0,0},
+        {0,1,0,0,1,0,0},
+        {0,1,0,0,1,0,0},
+        {0,0,1,1,0,1,1},
+        {0,0,0,0,1,0,0},
+        {0,0,0,0,1,0,0},
+    };
+
+    // BFS(G, 1,7);
+    printf("\n");
+    DFS(G, 1, 7);
     return 0;
 }
