@@ -7,30 +7,30 @@ struct Node{
     struct Node *rchild;
 }*root=NULL;
 
-struct Node* newNode(int key)
+struct Node* newNode(int data)
 {
     struct Node *t;
     
         t= (struct Node *)malloc(sizeof(struct Node));
-        t->data=key;
+        t->data=data;
         t->lchild=t->rchild=NULL;
         return t;
 }
 
-struct node* insert(struct node* node, int key)
+struct Node* insert(struct Node* Node, int data)
 {
-    /* If the tree is empty, return a new node */
-    if (node == NULL)
-        return newNode(key);
+    /* If the tree is empty, return a new Node */
+    if (Node == NULL)
+        return newNode(data);
  
     /* Otherwise, recur down the tree */
-    if (key < node->key)
-        node->lchild = insert(node->lchild, key);
-    else if (key > node->key)
-        node->rchild = insert(node->rchild, key);
+    if (data < Node->data)
+        Node->lchild = insert(Node->lchild, data);
+    else if (data > Node->data)
+        Node->rchild = insert(Node->rchild, data);
  
-    /* return the (unchanged) node pointer */
-    return node;
+    /* return the (unchanged) Node pointer */
+    return Node;
 }
 
 void preorder(struct Node *p){
@@ -42,10 +42,10 @@ void preorder(struct Node *p){
 }
 
 int main(){
-    push(13);
-    push(10);
-    push(23);
-    push(25);
+    insert(root, 13);
+    insert(root, 10);
+    insert(root, 23);
+    insert(root, 25);
     preorder(root);
     return 0;
 }
