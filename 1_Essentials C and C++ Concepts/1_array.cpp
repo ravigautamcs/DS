@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+// back to work guys-- 20/8/2021
 int main(){
     
     int A[5];
