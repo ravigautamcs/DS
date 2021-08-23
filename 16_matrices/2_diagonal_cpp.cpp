@@ -7,6 +7,12 @@ class Diagonal{
         int *A;
 
     public :
+
+        Diagonal(){ //constructor
+            n=2;
+            A=new int[n];
+        }
+
         Diagonal(int n){
             this->n=n;
             A= new int[n];
@@ -45,7 +51,20 @@ void Diagonal :: display(){
     }
 }
 
+Diagonal :: ~Diagonal(){
+    delete [] A;
+}
+
 int main(){
+
+    Diagonal d(4);
+
+    d.Set(1,1,5);
+    d.Set(2,2,6);
+    d.Set(3,3,7);
+    d.Set(4,4,8);
+
+    d.display();
 
     return 0;
 }
