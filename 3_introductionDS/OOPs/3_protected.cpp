@@ -13,7 +13,7 @@ class Box{
     int getVolume(void);
 };
 
-class smallBox : Box{  // this is the derived class or the child class
+class smallBox : public Box{  // this is the derived class or the child class
     public:
     void setLength(int x);
     int getLength(void);
