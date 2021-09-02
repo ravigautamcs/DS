@@ -27,5 +27,39 @@ int main(){
 	// always return the next location of where the val is present
 	cout<<"upper_bound : "<<(*uptr)<<endl;
 
+	//for vector data structure
+	vector<int> v;
+	for(int i=0; i<n; i++){
+		int x; cin>>x;
+		v.push_back(x);
+	}
+
+	sort(v.begin(), v.end());
+
+	for(auto it=v.begin(); it<v.end(); it++){
+		cout<<(*it)<<" ";
+	}
+	cout<<"\n";
+
+	auto it = upper_bound(v.begin(), v.end(), 5);
+	cout<<(*it)<<endl;
+
+	//for maps and sets
+	set<int> s;
+	for(int i=0; i<n; i++){
+		int x; cin>>x;
+		s.insert(x);
+	}
+
+	for(auto it = s.begin(); it != s.end(); it++){
+		cout<<(*it)<<" ";
+	}
+	cout<<"\n";
+	auto it = s.upper_bound(3);
+	cout<<(*it)<<endl;
+
+	//in case of maps the upper and lower bound is found on the basis of the key values of the maps
+
+
 	return 0;
 }
