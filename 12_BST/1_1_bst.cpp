@@ -34,15 +34,41 @@ void print(bst * root){
 }
 
 //level order Print :- recursive approach 
-void LOrderPrint(bst * root){
+int height(bst * root){
+    if(root==NULL) return 0;
+
+    int ls = height(root->left);
+    int rs = height(root->right);
+    return max(ls,rs)+1;
+}
+
+void printKthLevel(bst * root, int k){
+    if(root==NULL) return;
+
+    if(k==1){
+        cout<<root->data<<" ";
+        return;
+    }
+    printKthLevel(root->left, k-1);
+    printKthLevel(root->right, k-1);
+}
+
+void printLevelOrder(bst *root, int h){
     if(root==NULL) return ;
 
-    
+    for(int i=1; i<=h ; i++){
+        printKthLevel(root, i);
+        cout<<endl;
+    }
 }
 
 int main(){
 
     bst *root = buildTree();
     print(root);
+    cout<<endl;
+    cout<<height(root);
+    cout<<endl;
+    printLevelOrder(root, height(root));
     return 0;
 }
