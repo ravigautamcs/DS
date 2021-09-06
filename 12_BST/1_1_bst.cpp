@@ -69,6 +69,6 @@ int main(){
     cout<<endl;
     cout<<height(root);
     cout<<endl;
-    printLevelOrder(root, height(root));
+    printLevelOrder(root, height(root)); // this will take O(n^2) time complexity
     return 0;
 }
