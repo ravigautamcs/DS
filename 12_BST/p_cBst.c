@@ -16,7 +16,7 @@ struct Node* newNode(int data)
         t->lchild=t->rchild=NULL;
         return t;
 }
-
+  
 struct Node* insert(struct Node* Node, int data)
 {
     /* If the tree is empty, return a new Node */
