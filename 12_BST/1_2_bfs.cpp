@@ -136,6 +136,32 @@ int newTree(node * root){
     return root->data + temp;
 }
 
+// height balanced Tree
+class HBPair{
+    public : 
+        int h;
+        bool balance;
+};
+
+HBPair isHeightBalance(node * root){
+    HBPair b;
+    if(root==NULL){
+        b.h =0;
+        b.balance = true;
+        return b;
+    }
+
+    HBPair left = isHeightBalance(root->left);
+    HBPair right = isHeightBalance(root->right);
+
+    b.h = max(left.h, right.h) +1;
+    if(abs(left.h-right.h)<=1 && left.balance && right.balance) b.balance=true;
+    else 
+        b.balance=false;
+
+    return b;
+}
+
 
 int main(){  
 
@@ -154,5 +180,9 @@ int main(){
     cout<<"diameter : "<<p.diameter<<"\n";
     newTree(root);
     bfs(root);
+
+    HBPair b = isHeightBalance(root);
+    cout<<b.h<<"\n"<<b.balance;
+
     return 0;
 }
