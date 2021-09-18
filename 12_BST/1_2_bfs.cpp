@@ -100,7 +100,44 @@ int diameter(node *root){
     return max(c1, max (c2,c3));
 }
 
-int main(){
+//calculating the diameter of the tree in the time complexity of O(N)
+class Pair {
+    public :
+        int diameter;
+        int height;
+};
+
+Pair fastDiameter(node * root){
+    Pair p;
+    if(root==NULL){
+        p.diameter = p.height =0;
+        return p;
+    }
+
+    Pair left = fastDiameter(root->left);
+    Pair right = fastDiameter(root->right);
+
+    p.height = max(left.height, right.height)+1;
+    p.diameter = max(left.height + right.height, max(left.diameter, right.diameter));
+    return p;
+}
+
+// changing the nodes value with the sum of the child nodes
+int newTree(node * root){
+    if(root==NULL) return 0;
+
+    if(root->left==NULL && root->right==NULL) return root->data;
+
+    // recursive call
+    int left = newTree(root->left);
+    int right = newTree(root->right);
+    int temp = root->data;
+    root->data = left + right ;
+    return root->data + temp;
+}
+
+
+int main(){  
 
     node *root = buildTree();
     bfs(root);
@@ -111,5 +148,11 @@ int main(){
     cout<<sum(root);
     cout<<endl;
     cout<<diameter(root);
+    cout<<endl;
+    Pair p = fastDiameter(root);
+    cout<<"height : "<<p.height<<"\n";
+    cout<<"diameter : "<<p.diameter<<"\n";
+    newTree(root);
+    bfs(root);
     return 0;
 }
