@@ -35,7 +35,13 @@ void ImergeSort(int A[], int n){
 int main(){
 
     int A[]={4,2,7,3,1,5};
+    cout<<"Initial Array : ";
+    for(int i=0; i<6; i++){
+        cout<<A[i]<<" ";
+    }
+    cout<<endl;
     ImergeSort(A, 6);
+    cout<<"final sorted array using merge sort : ";
     for(int i=0; i<6; i++){
         cout<<A[i]<<" ";
     }

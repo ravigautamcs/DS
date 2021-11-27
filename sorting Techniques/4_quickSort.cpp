@@ -1,6 +1,6 @@
 
-#include <stdio.h>
-#include <stdlib.h>
+#include<bits/stdc++.h>
+using namespace std;
 // quick sort
 void swap(int *x, int *y)
 {
@@ -39,9 +39,11 @@ void QuickSort(int A[], int l, int h)
 int main()
 {
     int A[] = {11, 13, 7, 12, 16, 9, 24, 5, 10, 3}, n = 10, i;
-
+    cout<<"Initial array : ";
+    for(int i=0; i<10; i++) cout<<A[i]<<" ";
+    cout<<endl;
     QuickSort(A,0,n);
-
+    cout<<"final sorted array using Quick sort : ";
     for (i = 0; i < 10; i++)
         printf("%d ", A[i]);
     printf("\n");
